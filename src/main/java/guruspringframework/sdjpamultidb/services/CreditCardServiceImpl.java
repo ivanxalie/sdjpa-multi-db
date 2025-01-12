@@ -8,6 +8,7 @@ import guruspringframework.sdjpamultidb.repositories.creditcard.CreditCardReposi
 import guruspringframework.sdjpamultidb.repositories.pan.CreditCardPANRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -20,6 +21,7 @@ public class CreditCardServiceImpl implements CreditCardService {
     private final CreditCardPANRepository creditCardPANRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public CreditCard getCreditCardById(Long id) {
         CreditCard card = creditCardRepository.findById(id).orElseThrow();
         fillHolder(card);
@@ -41,6 +43,7 @@ public class CreditCardServiceImpl implements CreditCardService {
     }
 
     @Override
+    @Transactional
     public CreditCard saveCreditCard(CreditCard card) {
         CreditCard saved = creditCardRepository.save(card);
         if (containsAtLeastOneElement(card.getFirstName(), card.getLastName(), card.getZipCode()))
