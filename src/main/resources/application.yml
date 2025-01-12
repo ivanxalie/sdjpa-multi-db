@@ -1,0 +1,31 @@
+spring:
+  pan:
+    liquibase:
+      password: password
+      url: jdbc:mysql://127.0.0.1:3306/pan?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      username: panadmin
+    datasource:
+      username: panuser
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/pan?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      password: password
+  cardholder:
+    datasource:
+      url: jdbc:mysql://127.0.0.1:3306/cardholder?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      password: password
+      username: cardholderuser
+    liquibase:
+      url: jdbc:mysql://127.0.0.1:3306/cardholder?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      username: cardholderadmin
+      password: password
+  card:
+    datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: carduser
+      password: password
+      url: jdbc:mysql://127.0.0.1:3306/card?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    liquibase:
+      password: password
+      username: cardadmin
+      url: jdbc:mysql://127.0.0.1:3306/card?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
