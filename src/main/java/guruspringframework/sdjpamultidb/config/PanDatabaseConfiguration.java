@@ -15,6 +15,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
+import java.util.Objects;
 
 /**
  * Created by jt on 7/1/22.
@@ -53,6 +54,6 @@ public class PanDatabaseConfiguration {
     @Bean
     public PlatformTransactionManager panTransactionManager(
             @Qualifier("panEntityManagerFactory") LocalContainerEntityManagerFactoryBean panEntityManagerFactory) {
-        return new JpaTransactionManager(panEntityManagerFactory.getObject());
+        return new JpaTransactionManager(Objects.requireNonNull(panEntityManagerFactory.getObject()));
     }
 }

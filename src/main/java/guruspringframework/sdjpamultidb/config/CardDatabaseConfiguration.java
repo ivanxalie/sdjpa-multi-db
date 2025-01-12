@@ -14,6 +14,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
+import java.util.Objects;
 
 /**
  * Created by jt on 7/1/22.
@@ -49,17 +50,6 @@ public class CardDatabaseConfiguration {
     @Bean
     public PlatformTransactionManager cardTransactionManager(
             @Qualifier("cardEntityManagerFactory") LocalContainerEntityManagerFactoryBean cardEntityManagerFactory) {
-
-        return new JpaTransactionManager(cardEntityManagerFactory.getObject());
+        return new JpaTransactionManager(Objects.requireNonNull(cardEntityManagerFactory.getObject()));
     }
 }
-
-
-
-
-
-
-
-
-
-
