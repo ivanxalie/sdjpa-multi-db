@@ -7,6 +7,12 @@
   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
   http://www.liquibase.org/xml/ns/pro
   http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd">
-    <include relativeToChangelogFile="true" file="create_card.xml"/>
-    <include relativeToChangelogFile="true" file="expand_cvv_and_expiration_date.xml"/>
+
+    <changeSet id="expand-credit_card_cvv_and_expiration_date" author="ivanxalie">
+        <preConditions>
+            <tableExists tableName="credit_card"/>
+        </preConditions>
+        <modifyDataType tableName="credit_card" columnName="cvv" newDataType="varchar(30)"/>
+        <modifyDataType tableName="credit_card" columnName="expiration_date" newDataType="varchar(30)"/>
+    </changeSet>
 </databaseChangeLog>
