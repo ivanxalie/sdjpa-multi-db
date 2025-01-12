@@ -5,12 +5,16 @@ spring:
       url: jdbc:mysql://127.0.0.1:3306/pan?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
       username: panadmin
     datasource:
+      hikari:
+        poolName: HikariPool-Pan
       username: panuser
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://127.0.0.1:3306/pan?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
       password: password
   cardholder:
     datasource:
+      hikari:
+        poolName: HikariPool-CardHolder
       url: jdbc:mysql://127.0.0.1:3306/cardholder?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
       driver-class-name: com.mysql.cj.jdbc.Driver
       password: password
@@ -21,6 +25,8 @@ spring:
       password: password
   card:
     datasource:
+      hikari:
+        poolName: HikariPool-Card
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: carduser
       password: password
