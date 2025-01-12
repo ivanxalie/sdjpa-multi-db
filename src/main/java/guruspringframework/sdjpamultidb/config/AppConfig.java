@@ -1,5 +1,6 @@
 package guruspringframework.sdjpamultidb.config;
 
+import org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy;
 import org.hibernate.cfg.AvailableSettings;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +15,7 @@ public class AppConfig {
     public Properties emValidateDefaultProperties() {
         Properties properties = new Properties();
         properties.put(AvailableSettings.HBM2DDL_AUTO, "validate");
-        properties.put(AvailableSettings.PHYSICAL_NAMING_STRATEGY, "org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy");
+        properties.put(AvailableSettings.PHYSICAL_NAMING_STRATEGY, CamelCaseToUnderscoresNamingStrategy.class.getName());
         return properties;
     }
 }
