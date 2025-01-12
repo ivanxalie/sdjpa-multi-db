@@ -24,7 +24,7 @@ class SdjpaMultiDbApplicationTests {
     }
 
     @Test
-    void testSaveAndGetCreditCard() {
+    void testSaveCreditCard() {
         CreditCard saved = createAndSave();
 
         assertThat(saved).isNotNull();
