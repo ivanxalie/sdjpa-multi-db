@@ -7,6 +7,14 @@
   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
   http://www.liquibase.org/xml/ns/pro
   http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd">
-    <include relativeToChangelogFile="true" file="create_pan.xml"/>
-    <include relativeToChangelogFile="true" file="add_credit_card_id.xml"/>
+
+    <!-- Create Tables -->
+    <changeSet id="add-credit_card_id_to_credit_card_pan" author="ivanxalie">
+        <preConditions>
+            <tableExists tableName="credit_card_pan"/>
+        </preConditions>
+        <addColumn tableName="credit_card_pan">
+            <column name="credit_card_id" type="bigint" />
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>
