@@ -10,6 +10,7 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
+@Table(name = "credit_card_pan")
 public class CreditCardPAN {
 
     @Id

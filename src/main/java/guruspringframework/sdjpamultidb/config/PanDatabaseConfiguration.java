@@ -16,6 +16,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 import java.util.Objects;
+import java.util.Properties;
 
 /**
  * Created by jt on 7/1/22.
@@ -44,11 +45,14 @@ public class PanDatabaseConfiguration {
     @Bean
     public LocalContainerEntityManagerFactoryBean panEntityManagerFactory(
             @Qualifier("panDataSource") DataSource panDataSource,
-            EntityManagerFactoryBuilder builder) {
-        return builder.dataSource(panDataSource)
+            EntityManagerFactoryBuilder builder,
+            @Qualifier(AppConfig.DEFAULT_VALIDATE_MANAGER_PROPERTY_BEAN) Properties properties) {
+        LocalContainerEntityManagerFactoryBean bean = builder.dataSource(panDataSource)
                 .packages(CreditCardPAN.class)
                 .persistenceUnit("pan")
                 .build();
+        bean.setJpaProperties(properties);
+        return bean;
     }
 
     @Primary

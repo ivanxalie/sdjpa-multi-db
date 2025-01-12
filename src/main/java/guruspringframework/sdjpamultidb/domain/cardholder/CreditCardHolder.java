@@ -1,10 +1,7 @@
 package guruspringframework.sdjpamultidb.domain.cardholder;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -13,6 +10,7 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
+@Table(name = "credit_cardholder")
 public class CreditCardHolder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

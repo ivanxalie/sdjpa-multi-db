@@ -15,6 +15,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 import java.util.Objects;
+import java.util.Properties;
 
 /**
  * Created by jt on 7/1/22.
@@ -41,11 +42,14 @@ public class CardHolderDatabaseConfiguration {
     @Bean
     public LocalContainerEntityManagerFactoryBean cardholderEntityManagerFactory(
             @Qualifier("cardholderDataSource") DataSource cardholderDataSource,
-            EntityManagerFactoryBuilder builder) {
-        return builder.dataSource(cardholderDataSource)
+            EntityManagerFactoryBuilder builder,
+            @Qualifier(AppConfig.DEFAULT_VALIDATE_MANAGER_PROPERTY_BEAN) Properties properties) {
+        LocalContainerEntityManagerFactoryBean bean = builder.dataSource(cardholderDataSource)
                 .packages(CreditCardHolder.class)
                 .persistenceUnit("cardholder")
                 .build();
+        bean.setJpaProperties(properties);
+        return bean;
     }
 
     @Bean
