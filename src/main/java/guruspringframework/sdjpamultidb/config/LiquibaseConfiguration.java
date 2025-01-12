@@ -1,8 +1,8 @@
 package guruspringframework.sdjpamultidb.config;
 
-import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import org.springframework.boot.autoconfigure.liquibase.DataSourceClosingSpringLiquibase;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,9 +20,9 @@ public class LiquibaseConfiguration {
     }
 
     @Bean
-    public SpringLiquibase liquibaseCard(@Qualifier("cardLiquibaseDataSourceProps")
-                                         DataSourceProperties cardLiquibaseDataSourceProps) {
-        SpringLiquibase liquibase = new SpringLiquibase();
+    public DataSourceClosingSpringLiquibase liquibaseCard(@Qualifier("cardLiquibaseDataSourceProps")
+                                                          DataSourceProperties cardLiquibaseDataSourceProps) {
+        DataSourceClosingSpringLiquibase liquibase = new DataSourceClosingSpringLiquibase();
         liquibase.setDataSource(cardLiquibaseDataSourceProps.initializeDataSourceBuilder().build());
         liquibase.setChangeLog("classpath:/db/changelog/card/changelog-master.xml");
         return liquibase;
@@ -35,9 +35,9 @@ public class LiquibaseConfiguration {
     }
 
     @Bean
-    public SpringLiquibase liquibaseCardHolder(@Qualifier("cardholderLiquibaseDataSourceProps")
-                                               DataSourceProperties cardholderLiquibaseDataSourceProps) {
-        SpringLiquibase liquibase = new SpringLiquibase();
+    public DataSourceClosingSpringLiquibase liquibaseCardHolder(@Qualifier("cardholderLiquibaseDataSourceProps")
+                                                                DataSourceProperties cardholderLiquibaseDataSourceProps) {
+        DataSourceClosingSpringLiquibase liquibase = new DataSourceClosingSpringLiquibase();
         liquibase.setDataSource(cardholderLiquibaseDataSourceProps.initializeDataSourceBuilder().build());
         liquibase.setChangeLog("classpath:/db/changelog/cardholder/changelog-master.xml");
         return liquibase;
@@ -50,9 +50,9 @@ public class LiquibaseConfiguration {
     }
 
     @Bean
-    public SpringLiquibase liquibasePan(@Qualifier("panLiquibaseDataSourceProps")
-                                        DataSourceProperties panLiquibaseDataSourceProps) {
-        SpringLiquibase liquibase = new SpringLiquibase();
+    public DataSourceClosingSpringLiquibase liquibasePan(@Qualifier("panLiquibaseDataSourceProps")
+                                                         DataSourceProperties panLiquibaseDataSourceProps) {
+        DataSourceClosingSpringLiquibase liquibase = new DataSourceClosingSpringLiquibase();
         liquibase.setDataSource(panLiquibaseDataSourceProps.initializeDataSourceBuilder().build());
         liquibase.setChangeLog("classpath:/db/changelog/pan/changelog-master.xml");
         return liquibase;
